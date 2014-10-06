@@ -1,44 +1,74 @@
 <p>
-    <i>( Describe task in general )</i>
+    For parcel delivery is important to find the shortest path.
+    Let's look at simple model of road map, where roads are straight lines between cities.
 </p>
 
 <p>
-    Sum two passed ints
+    You are given a road map as a graph in <a href="http://en.wikipedia.org/wiki/Distance_matrix">
+    distance matrix</a> representation. For <strong>N</strong> cities the matrix has NxN size.
+    The matrix (two-dimensional array) containing the distances, taken pairwise, of a set of points.
+    For example an element in i-th row and j-th column show a distance between city i and j.
+    If matrix[i][j]&nbsp;==&nbsp;0, then a road doesn't exist between these cities.
+    The roads are undirected, so matrix[i][j]&nbsp;==&nbsp;matrix[j][i].
+    And the matrix has zero main diagonal.
 </p>
-
-<p style="text-align: center;">
-    <img class="for_info_only" title="example" src="{{MEDIA}}example.png" alt="example" width="392px"/>
-    <img class="for_editor_only" title="example" src="{{MEDIA}}example.png" alt="example" width="380px"/>
-</p>
-
-<p><i>( Explain input and output values )</i></p>
 <p>
-    <strong>Input: </strong> Two arguments. Both are int
+    You should find the shortest path between <strong>0th</strong> and <strong>(N-1)th</strong>
+    cities.
+    The result must be a total length of this path. If the path doesn't exist then return 0.
+</p>
+<p>
+    For example this map will be represented with the follow matrix and the result is 116.
+</p>
+<div>
+
+    <p style="float: left">
+        <img title="example" src="{{MEDIA}}example.png" alt="example" width="400px"/>
+    </p>
+    <pre>
+(( 0, 80, 58,  0),
+ (80,  0, 71, 80),
+ (58, 71,  0, 58),
+ ( 0, 80, 58,  0))
+</pre>
+</div>
+
+<p>
+    <strong>Additional rules: </strong>
+    This is a <strong>code golf mission</strong> and your main goal is to make your code as short as possible.
+    The shorter your code, the more points you earn.
+    Your score for this mission is dynamic and directly related to the length of your code.
+    For reference, scoring is based on the number of characters used.
+    250 characters is the maximum allowable and it will earn you zero points.
+    For each character less than 250, you earn 1 point. For example for 200 character long code earns you 50 points.
+</p>
+<p>
+    <strong>Input: </strong> A road map as a tuple of tuples with integers.
 </p>
 
 <p>
-    <strong>Output: </strong> Int. 
+    <strong>Output: </strong> The length of the shortest path from city 0 to city (N-1) as an integer.
 </p>
-
 
 
 <div class="for_info_only">
-    <p><i>( Put some usage examples )</i></p>
     <p>
         <strong>Example:</strong>
     </p>
     <pre class="brush: python">
-checkio(3, 2) == 5
-checkio(5, 7) == 12
+
     </pre>
 </div>
 
 <p class="for_info_only">
     <strong>How it is used: </strong>
-    <i>(Here you can explain how it can be used in development and what is usage of this.)</i>
 </p>
 
 <p>
-    <strong>Precondition:</strong>
-    <i>Constraints for Input</i>
+    <strong>Precondition:</strong><br>
+    1 &lt; len(matrix) &le; 20<br>
+    all(len(matrix[0]) == len(row) for row in matrix)<br>
+    all(not matrix[i][i] for i in range(len(matrix)))<br>
+    all(all(matrix[i][j] == matrix[j][i] for j in range(len(matrix))) for i in range(len(matrix)))<br>
+
 </p>
