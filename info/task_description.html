@@ -23,7 +23,7 @@
 <div>
 
     <p style="float: left">
-        <img title="example" src="{{MEDIA}}example.png" alt="example" width="400px"/>
+        <img title="simple-graph" src="{{MEDIA}}simple-graph.png" alt="simple-graph" width="400px"/>
     </p>
     <pre>
 (( 0, 80, 58,  0),
@@ -32,22 +32,26 @@
  ( 0, 80, 58,  0))
 </pre>
 </div>
+<div style="clear: both"></div>
 
 <p>
     <strong>Additional rules: </strong>
-    This is a <strong>code golf mission</strong> and your main goal is to make your code as short as possible.
+    This is a <strong>code golf mission</strong> and your main goal is to make your code as short as
+    possible.
     The shorter your code, the more points you earn.
     Your score for this mission is dynamic and directly related to the length of your code.
     For reference, scoring is based on the number of characters used.
     250 characters is the maximum allowable and it will earn you zero points.
-    For each character less than 250, you earn 1 point. For example for 200 character long code earns you 50 points.
+    For each character less than 250, you earn 1 point. For example for 200 character long code
+    earns you 50 points.
 </p>
 <p>
     <strong>Input: </strong> A road map as a tuple of tuples with integers.
 </p>
 
 <p>
-    <strong>Output: </strong> The length of the shortest path from city 0 to city (N-1) as an integer.
+    <strong>Output: </strong> The length of the shortest path from city 0 to city (N-1) as an
+    integer.
 </p>
 
 
@@ -69,6 +73,7 @@
     1 &lt; len(matrix) &le; 20<br>
     all(len(matrix[0]) == len(row) for row in matrix)<br>
     all(not matrix[i][i] for i in range(len(matrix)))<br>
-    all(all(matrix[i][j] == matrix[j][i] for j in range(len(matrix))) for i in range(len(matrix)))<br>
+    all(all(matrix[i][j] == matrix[j][i] for j in range(len(matrix))) for i in
+    range(len(matrix)))<br>
 
 </p>
