@@ -82,7 +82,7 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_212'],
             var fname = 'golf';
 
             var checkioInput = data.in || 1401;
-            var checkioInputStr = fname + '(' + JSON.stringify(checkioInput) + ')';
+            var checkioInputStr = fname + '(' + JSON.stringify(checkioInput).replace(/\[/g, "(").replace(/]/g, ")") + ')';
             var isCall = true;
 
             var failError = function (dError) {
