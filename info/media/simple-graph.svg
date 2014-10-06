@@ -5,6 +5,7 @@
     <rect x="0" y="0" width="400" height="400" fill="#000000" fill-opacity="0"/>
   </g>
   <g id="Layer_1">
+    <path d="M40.5,40.5 L240.5,200.5" fill-opacity="0" stroke="#294270" stroke-width="5"/>
     <g>
       <path d="M215.5,200.5 z" fill="#8FC7ED"/>
       <path d="M215.5,200.5 z" fill-opacity="0" stroke="#294270" stroke-width="1"/>
