@@ -110,7 +110,73 @@ TESTS = {
                  (2, 7), (7, 7), (1, 4), (9, 9), (1, 8), (1, 9), (8, 7), (9, 5), (8, 5), (7, 9)],
                 (0, 6, 2, 17, 19)]
         },
+    ],
+    "Random": [
+
     ]
 }
 
+from random import randint, random
 
+
+def generate_points(quantity=20):
+    points = set()
+    while len(points) < quantity:
+        new_point = (randint(1, 9), randint(1, 9))
+        if new_point in points:
+            continue
+        points.add(new_point)
+    return list(points)
+
+
+def generate_roads(points, density=0.5):
+    roads = []
+    for i in range(len(points)):
+        for j in range(i + 1, len(points)):
+            if random() < density:
+                roads.append([i, j])
+    return roads
+
+
+from math import hypot
+
+from heapq import heappop, heappush, heapify
+
+
+def solution(matrix):
+    N = len(matrix) - 1
+    heap = []
+    heapify(heap)
+    visited = set()
+    heappush(heap, (0, 0, (0,)))
+    while heap:
+        current, total, path = heappop(heap)
+        if current == N:
+            return total, path
+        if current in visited:
+            continue
+        visited.add(current)
+        for i, d in enumerate(matrix[current]):
+            if d:
+                new_path = path + (i,)
+                heappush(heap, (i, total + d, new_path))
+    return 0, ()
+
+
+def convert_map(points, connections):
+    matrix = [[0] * len(points) for _ in range(len(points))]
+    for f, s in connections:
+        distance = hypot(points[f][0] - points[s][0], points[f][1] - points[s][1])
+        matrix[f][s] = matrix[s][f] = round(distance * 10)
+    return matrix
+
+
+for _ in range(8):
+    p = generate_points(randint(10, 20))
+    c = generate_roads(p, 0.4)
+    m = convert_map(p, c)
+    ans, path = solution(convert_map(p, c))
+    TESTS["Random"].append({
+        "input": m,
+        "answer": ans,
+        "explanation": [p, path]})

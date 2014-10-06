@@ -81,7 +81,12 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_212'],
             //YOUR FUNCTION NAME
             var fname = 'golf';
 
-            var checkioInput = data.in || [[0, 80, 58, 0], [80, 0, 71, 80], [58, 71, 0, 58], [0, 80, 58, 0]];
+            var checkioInput = data.in || [
+                [0, 80, 58, 0],
+                [80, 0, 71, 80],
+                [58, 71, 0, 58],
+                [0, 80, 58, 0]
+            ];
             var checkioInputStr = fname + '(' + JSON.stringify(checkioInput).replace(/\[/g, "(").replace(/]/g, ")") + ')';
             var isCall = true;
 
@@ -192,12 +197,8 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_212'],
                 var coordinates = data[0];
                 var path = "," + String(data[1]) + ",";
 
-                for (var i = 0; i < coordinates.length; i++) {
-                    paper.circle(pad + (coordinates[i][0] - 1) * cell,
-                        pad + (coordinates[i][1] - 1) * cell, radius).attr(aPoint);
-                    paper.text(pad + (coordinates[i][0] - 1) * cell,
-                        pad + (coordinates[i][1] - 1) * cell, i).attr(aNumber);
-                }
+
+                var pathSet = paper.set();
 
                 for (var r = 0; r < matrix.length; r++) {
                     for (var c = r; c < matrix[r].length; c++) {
@@ -210,10 +211,20 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_212'],
                             ]).attr(aLine);
                             if (path.indexOf("," + r + "," + c + ",") !== -1 || path.indexOf("," + c + "," + r + ",") !== -1) {
                                 p.attr(aLineX);
+                                pathSet.push(p);
                             }
-                            p.toBack();
                         }
                     }
+
+                }
+
+                pathSet.toFront();
+
+                for (var i = 0; i < coordinates.length; i++) {
+                    paper.circle(pad + (coordinates[i][0] - 1) * cell,
+                        pad + (coordinates[i][1] - 1) * cell, radius).attr(aPoint);
+                    paper.text(pad + (coordinates[i][0] - 1) * cell,
+                        pad + (coordinates[i][1] - 1) * cell, i).attr(aNumber);
                 }
             }
 
