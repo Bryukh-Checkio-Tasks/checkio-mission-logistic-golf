@@ -75,7 +75,7 @@ golf(((0, 80, 58, 0), (80, 0, 71, 80), (58, 71, 0, 58), (0, 80, 58, 0))) == 116<
     1 &lt; len(matrix) &le; 20<br>
     all(len(matrix[0]) == len(row) for row in matrix)<br>
     all(not matrix[i][i] for i in range(len(matrix)))<br>
-    all(all(matrix[i][j] == matrix[j][i] for j in range(len(matrix))) for i in
-    range(len(matrix)))<br>
+    all(all(matrix[i][j] == matrix[j][i] for j in range(len(matrix))) for i in range(len(matrix)))<br>
+    all(all(0 &le; el &lt; 10 ** 5 for el in row) for row in matrix)<br>
 
 </p>
