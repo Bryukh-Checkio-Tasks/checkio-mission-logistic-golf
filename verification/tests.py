@@ -258,6 +258,7 @@ def solution(matrix):
     return 0, ()
 
 
+
 def convert_map(points, connections):
     k = randint(10, 1000)
     matrix = [[0] * len(points) for _ in range(len(points))]
@@ -271,7 +272,7 @@ for _ in range(8):
     p = generate_points(randint(10, 20))
     c = generate_roads(p, 0.25)
     m = convert_map(p, c)
-    ans, path = solution(convert_map(p, c))
+    ans, path = solution(m)
     TESTS["Random"].append({
         "input": m,
         "answer": ans,
