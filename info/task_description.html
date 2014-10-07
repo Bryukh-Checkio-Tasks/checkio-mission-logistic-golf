@@ -1,24 +1,28 @@
 <p>
-    For parcel delivery is important to find the shortest path.
+    For parcel delivery, it is important to find the shortest path.
     Let's look at simple model of road map, where roads are straight lines between cities.
 </p>
 
+You are given a road map as a graph in distance matrix representation.
+
+
 <p>
     You are given a road map as a graph in <a href="http://en.wikipedia.org/wiki/Distance_matrix">
-    distance matrix</a> representation. For <strong>N</strong> cities the matrix has NxN size.
-    The matrix (two-dimensional array) containing the distances, taken pairwise, of a set of points.
-    For example an element in i-th row and j-th column show a distance between city i and j.
-    If matrix[i][j]&nbsp;==&nbsp;0, then a road doesn't exist between these cities.
-    The roads are undirected, so matrix[i][j]&nbsp;==&nbsp;matrix[j][i].
-    And the matrix has zero main diagonal.
+    distance matrix</a> representation.
+    For <strong>N</strong> cities, the matrix has a size of NxN. The matrix (a two-dimensional array)
+    contains the
+    distances as of sets of points. For example: an element in i-th row and j-th column shows a
+    distance between city i and j. If the matrix[i][j]&nbsp;==&nbsp;0, then a road doesn't exist between these
+    cities. The roads are undirected, so matrix[i][j]&nbsp;==&nbsp;matrix[j][i], and in addition, the matrix
+    has zero main diagonal.
 </p>
 <p>
-    You should find the shortest path between <strong>0th</strong> and <strong>(N-1)th</strong>
-    cities.
-    The result must be a total length of this path. If the path doesn't exist then return 0.
+    You should find the shortest path between the <strong>0th</strong> and <strong>(N-1)th</strong>
+    cities. The result must be the
+    total length of this path. If a path doesn't exist then return 0.
 </p>
 <p>
-    For example this map will be represented with the follow matrix and the result is 116.
+    For example: this map will is represented by the following matrix and results in 116.
 </p>
 <div style="text-align: center">
 
@@ -64,8 +68,9 @@ golf(((0, 80, 58, 0), (80, 0, 71, 80), (58, 71, 0, 58), (0, 80, 58, 0))) == 116<
 <br>
 <p class="for_info_only">
     <strong>How it is used: </strong>
-    This is a classic pathfinding problems, but here you need more creativity and
-    python tricks. It can help to more depth comprehensions of Python mechanisms.
+    This is a classic pathfinding problem, but in this situation you need to lean more on your
+    creativity and python tricks. It can help to illustrate some of the more in-depth comprehensions
+    of Python’s mechanisms.
 </p>
 
 <p>
