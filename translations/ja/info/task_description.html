@@ -1,0 +1,116 @@
+<p>
+  小包の配達のために、最短距離を探すことは重要です。
+  街の間の道路が直線の道である道路地図の単純なモデルを見てみましょう。
+</p>
+<!-- <p>
+    For parcel delivery, it is important to find the shortest path.
+    Let's look at simple model of road map, where roads are straight lines between cities.
+</p> -->
+
+<p>
+  あなたは道路地図を<a href="http://ja.wikipedia.org/wiki/%E8%B7%9D%E9%9B%A2%E8%A1%8C%E5%88%97">
+    距離行列</a>の表現でグラフとして与えられます。
+    <strong>N</strong> 個の街では、行列の大きさはNxNです。
+    行列(2次元配列)は場所の集合としての距離が含まれます。
+    例えば、i 番目の列とj 番目の行は街iと街jの間の距離を表します。
+    もし matrix[i][j]&nbsp;==&nbsp;0 だったら、それらの街の間に道は存在しないということです。
+    道には向きがないので matrix[i][j]&nbsp;==&nbsp;matrix[j][i] になり、付け加えるなら行列の対角成分は0です。
+</p>
+<!-- <p>
+    You are given a road map as a graph in <a href="http://en.wikipedia.org/wiki/Distance_matrix">
+    distance matrix</a> representation.
+    For <strong>N</strong> cities, the matrix has a size of NxN. The matrix (a two-dimensional array)
+    contains the
+    distances as of sets of points. For example: an element in i-th row and j-th column shows a
+    distance between city i and j. If the matrix[i][j]&nbsp;==&nbsp;0, then a road doesn't exist between these
+    cities. The roads are undirected, so matrix[i][j]&nbsp;==&nbsp;matrix[j][i], and in addition, the matrix
+    has zero main diagonal.
+</p> -->
+<p>
+  あなたは<strong>0番目</strong> と <strong>(N-1)番目</strong>の街の間の最短経路を探さなければいけません。
+  結果は、その道の合計の長さでなくてはいけません。
+  もし道が存在しないならば0を返します。
+</p>
+<!-- <p>
+    You should find the shortest path between the <strong>0th</strong> and <strong>(N-1)th</strong>
+    cities. The result must be the
+    total length of this path. If a path doesn't exist then return 0.
+</p> -->
+<p>
+  例: この地図は以下の行列によって表されて結果は116です。
+</p>
+<!-- <p>
+    For example: this map will is represented by the following matrix and results in 116.
+</p> -->
+<div style="text-align: center">
+
+    <p style="display: inline-block">
+        <img title="simple-graph" src="{{MEDIA}}simple-graph.svg" alt="simple-graph" width="200px"/>
+    </p>
+    <pre style="display: inline-block">
+(( 0, 80, 58,  0),
+ (80,  0, 71, 80),
+ (58, 71,  0, 58),
+ ( 0, 80, 58,  0))
+</pre>
+</div>
+
+<p>
+    <strong>追加ルール:  </strong>
+    これは <strong>コードゴルフミッション</strong> で、あなたの主なゴールはあなたのコードを出来る限り短くすることです。
+    コードを短くすればより多くのポイントを獲得することができます。
+    あなたのスコアは動的でコードの長さに直接関連しています。
+    参考までにスコアは使われた文字の数に基づいています。
+    350文字が許容される最大文字数でこの時は0点です。
+    350文字から1文字減るごとに1ポイント獲得することができます。
+    例えば200文字の長さのコードでは150ポイント獲得することになります。
+</p>
+<!-- <p>
+    <strong>Additional rules: </strong>
+    This is a <strong>code golf mission</strong> and your main goal is to make your code as short as
+    possible.
+    The shorter your code, the more points you earn.
+    Your score for this mission is dynamic and directly related to the length of your code.
+    For reference, scoring is based on the number of characters used.
+    350 characters is the maximum allowable and it will earn you zero points.
+    For each character less than 350, you earn 1 point. For example for 200 character long code
+    earns you 150 points.
+</p> -->
+<p>
+    <strong>入力 </strong> 整数のタプルのタプルとして道路地図が与えられます
+</p>
+
+<p>
+    <strong>出力 </strong> 街0 から 街(N-1) までの最短経路の長さを整数で出力します
+</p>
+
+
+<div class="for_info_only">
+    <p>
+        <strong>例</strong>
+    </p>
+    <pre class="brush: python">
+golf(((0, 80, 58, 0), (80, 0, 71, 80), (58, 71, 0, 58), (0, 80, 58, 0))) == 116</pre>
+</div>
+<br>
+<p class="for_info_only">
+    <strong>どうやって使われるか</strong>
+    これは古典的な経路探索問題ですが、この状況ではより創造性とPythonのトリックに頼る必要があります。
+    Pythonの機構のより深い知識の解説が助けになるかもしれません。
+</p>
+<!-- <p class="for_info_only">
+    <strong>How it is used: </strong>
+    This is a classic pathfinding problem, but in this situation you need to lean more on your
+    creativity and python tricks. It can help to illustrate some of the more in-depth comprehensions
+    of Python’s mechanisms.
+</p> -->
+
+<p>
+    <strong>事前条件</strong><br>
+    1 &lt; len(matrix) &le; 20<br>
+    all(len(matrix[0]) == len(row) for row in matrix)<br>
+    all(not matrix[i][i] for i in range(len(matrix)))<br>
+    all(all(matrix[i][j] == matrix[j][i] for j in range(len(matrix))) for i in range(len(matrix)))<br>
+    all(all(0 &le; el &lt; 10 ** 5 for el in row) for row in matrix)<br>
+
+</p>
